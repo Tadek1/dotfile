@@ -8,7 +8,9 @@ Install Vundle 1st (see https://github.com/VundleVim/Vundle.vim/blob/master/READ
 
 Then in your home directory create symbolic link
 
+````basg
 $ ln -s ~/dotfiles/vimrc ~/.vimrc
+````
 
 To do:
 - install.sh to install all dotfiles
