@@ -13,9 +13,9 @@ $ ln -s ~/dotfiles/vimrc ~/.vimrc
 ````
 
 To do:
-- install.sh to install all dotfiles
-- comment my rc files for self-documenting
-
+-----
+* install.sh to install all dotfiles
+* comment my rc files for self-documenting
 
 Inspirations
 ------------
