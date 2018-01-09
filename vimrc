@@ -47,7 +47,9 @@ nmap <leader>vr :vsp $MYVIMRC <cr>
 nmap <leader>v :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 nmap <leader>t :tabnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 
-nmap <C-s> :w<cr>
+nmap <F5> :setlocal spell spelllang=en_ca<cr>
+nmap <S-F5> :setlocal nospell<cr>
+
 imap jk <esc>
 imap kj <esc>
 
