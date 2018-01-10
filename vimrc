@@ -28,8 +28,6 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'guns/jellyx.vim'
 " Plugin 'digitaltoad/vim-pug'
 
 
