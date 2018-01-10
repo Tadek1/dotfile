@@ -11,6 +11,7 @@ Then in your home directory create symbolic link
 ````bash
 $ ln -s ~/dotfiles/vimrc ~/.vimrc
 ````
+Remember to install all plugins (run vim and :PluginInstall).
 
 To do:
 -----
