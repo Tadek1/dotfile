@@ -17,6 +17,7 @@ To do:
 -----
 * install.sh to install all dotfiles
 * comment my rc files for self-documenting
+* added directory structure
 
 Inspirations
 ------------
