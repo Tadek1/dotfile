@@ -29,6 +29,5 @@
 [push]
   default = upstream
 [commit]
-  gpgsign = true
 [hub]
   protocol = https
