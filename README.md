@@ -15,9 +15,7 @@ Remember to install all plugins (run vim and :PluginInstall).
 
 To do:
 -----
-* install.sh to install all dotfiles
-* comment my rc files for self-documenting
-* added directory structure
+- improve tmux installation and configuration (includeing {prefix} change to <CAPS-LOCK>
 
 Inspirations
 ------------
