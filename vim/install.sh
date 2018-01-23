@@ -2,5 +2,5 @@
 
 # force plugin installation (vundle)
 
-vim +PluginInstall +qall
+## vim +PluginInstall +qall
 
