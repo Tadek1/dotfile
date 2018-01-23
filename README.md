@@ -37,6 +37,17 @@ It is also good to remap **CAPSLOCK** key to **CTRL**:
 On Kubuntu (16.04), select Configure ->  Input Devices -> Keyboard -> Advance (tab) ->
    -> Caps Lock key behaviour -> Make Caps Lock an additional Ctrl
    
+3. add alias to ~/.bash_aliases
+```
+alias tmux="tmux -2"
+```
+to solve problem of not showing 'visual' highlight in vim when running n tmux.
+This equivalent of setting TERM=xterm-256color.
+
+```
+alias tmux="TERM=xterm-256color tmux"
+```
+
 To do:
 -----
 - improve tmux installation and configuration (includeing {prefix} change to <CAPS-LOCK>

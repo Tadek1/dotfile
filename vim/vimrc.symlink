@@ -111,7 +111,7 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 "-------------------------------------------------------------------------------
 
 set t_Co=256
-set background=dark
-" colorscheme jellybeans
+" set background=dark
+colorscheme jellybeans
 " colorscheme jellyx
-colorscheme solarized
+" colorscheme solarized
