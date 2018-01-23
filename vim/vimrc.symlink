@@ -26,8 +26,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'vim-ruby/vim-ruby'
+Plugin 'altercation/vim-colors-solarizedo'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'nanotech/jellybeans.vim'
+" Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'digitaltoad/vim-pug'
 
@@ -111,6 +112,6 @@ set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 
 set t_Co=256
 set background=dark
-colorscheme jellybeans
+" colorscheme jellybeans
 " colorscheme jellyx
-" colorscheme solarized
+colorscheme solarized
