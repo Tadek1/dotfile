@@ -1,27 +1,24 @@
 # use C-s as the tmux {prefix}
-unbind C-b
+unbind C-b 
 set -g prefix C-s
-# {prefix} repeted w/o another prefix
 bind-key -r C-s send-prefix
 
-# {prefix} r : source config file
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
-# switch panes (note: no {prefix} required)
+# switch panes predix C-hjkl
 bind-key -n C-h select-pane -L
 bind-key -n C-j select-pane -D
 bind-key -n C-k select-pane -U
 bind-key -n C-l select-pane -R
-# status line
+
 set-option -g default-terminal "screen-256color"
+# status line setup
+set-option -g status-left-length 50
 set-option -g status-bg '#666666'
 set-option -g status-fg '#aaaaaa'
-set-option -g status-left-length 50
-set-option -g status-right " #(battery -t)  #(date '+%a, %b %d - %R') "
+MOUSE_STATUS=On
+set-option -g status-right "Mouse #{?mouse,ON,OFF}   #(date '+%a, %b %d - %I:%M') "
 
-# Creating panes/splitting windows (create pane in current directory)
-# {prefix} - 
-# {prefix} | (note: no shift key required)
 bind-key - split-window -v -c '#{pane_current_path}'
 bind-key \ split-window -h -c '#{pane_current_path}'
 
@@ -59,14 +56,7 @@ bind-key b break-pane -d
 # Session Navigation
 bind-key C-j choose-tree
 
-#for tmux ver < 2.4
-bind P paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'r' rectangle-toggle
-# tmux buffer goes into clipboard (requires xclip installed)
-bind -t vi-copy y copy-pipe "xclip -sel clip -i"
-# copy by mouse drag
-# for tmux 2.1 and above
-set -g mouse on
+# Toggle mouse on with <prefix>M
+bind m set -g mouse \;  display "Mouse #{?mouse,ON,OFF}"
+
 
