@@ -6,6 +6,10 @@ vim
 ---
 Install Vundle 1st (see https://github.com/VundleVim/Vundle.vim/blob/master/README.md)
 
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
 Then in your home directory create symbolic link
 
 ````bash
