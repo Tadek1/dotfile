@@ -12,6 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " My bundles
+Plugin 'christoomey/vim-tmux-navigator'    " works with tmux C-h|C-j|C-k|C-l 
+Plugin 'christoomey/vim-tmux-runner'
 " Plugin 'ervandew/supertab'
 " Plugin 'kchmck/vim-coffee-script'
 " Plugin 'skwp/greplace.vim'
@@ -39,7 +41,7 @@ filetype plugin indent on    " required
 " --------------------------------------------------------------------------
 "  Leader Mappings 
 let mapleader = " " 
-map <leader>w :update<CR>
+map <leader>u :update<CR>
 map <leader>q :qall<CR>
 nmap <leader>0 ^ 
 nmap <leader>so :source $MYVIMRC <cr>
@@ -60,6 +62,12 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>   " like zoom (<prefix>z)  in tmux
+nnoremap <leader>= :wincmd =<cr>                 " toggle zoom in tmux
 
 syntax on
 
@@ -114,4 +122,4 @@ set t_Co=256
 " set background=dark
 colorscheme jellybeans
 " colorscheme jellyx
-" colorscheme solarized
+" colorscheme solarized 
