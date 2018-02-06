@@ -1,27 +1,34 @@
 # use C-s as the tmux {prefix}
-unbind C-b
+unbind C-b 
 set -g prefix C-s
-# {prefix} repeted w/o another prefix
 bind-key -r C-s send-prefix
 
-# {prefix} r : source config file
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
-# switch panes (note: no {prefix} required)
-bind-key -n C-h select-pane -L
-bind-key -n C-j select-pane -D
-bind-key -n C-k select-pane -U
-bind-key -n C-l select-pane -R
-# status line
+
+# Smart pane switching with awareness of Vim splits.
+# See: https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+bind-key -T copy-mode-vi C-h select-pane -L
+bind-key -T copy-mode-vi C-j select-pane -D
+bind-key -T copy-mode-vi C-k select-pane -U
+bind-key -T copy-mode-vi C-l select-pane -R
+bind-key -T copy-mode-vi C-\ select-pane -l
+     
 set-option -g default-terminal "screen-256color"
+# status line setup
+set-option -g status-left-length 50
 set-option -g status-bg '#666666'
 set-option -g status-fg '#aaaaaa'
-set-option -g status-left-length 50
-set-option -g status-right " #(battery -t)  #(date '+%a, %b %d - %R') "
+MOUSE_STATUS=On
+set-option -g status-right "Mouse #{?mouse,ON,OFF}   #(date '+%a, %b %d - %I:%M') "
 
-# Creating panes/splitting windows (create pane in current directory)
-# {prefix} - 
-# {prefix} | (note: no shift key required)
 bind-key - split-window -v -c '#{pane_current_path}'
 bind-key \ split-window -h -c '#{pane_current_path}'
 
@@ -47,6 +54,7 @@ bind -n C-Up resize-pane -U 5
 # Creating new Window
 bind c new-window -c "#{pane_current_path}"
 
+set -s escape-time 0
 # Window Navigation
 set -g base-index 1        # start window numbering at 1
 set -g renumber-windows on # renumber windows as they are created desroyed
@@ -59,14 +67,7 @@ bind-key b break-pane -d
 # Session Navigation
 bind-key C-j choose-tree
 
-#for tmux ver < 2.4
-bind P paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'r' rectangle-toggle
-# tmux buffer goes into clipboard (requires xclip installed)
-bind -t vi-copy y copy-pipe "xclip -sel clip -i"
-# copy by mouse drag
-# for tmux 2.1 and above
-set -g mouse on
+# Toggle mouse on with <prefix>M
+bind m set -g mouse \;  display "Mouse #{?mouse,ON,OFF}"
+
 
