@@ -22,9 +22,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-rails'
-" Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'                      " see  http://www.vim.org/scripts/script.php?script_id=2136
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 " Plugin 'vim-ruby/vim-ruby'
 " Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -55,6 +56,10 @@ nmap <F6> :NERDTreeToggle<cr>
 imap jk <esc>
 imap kj <esc>
 
+" single character insert from normal mode
+nnoremap <leader>i i_<Esc>r
+
+nnoremap <leader>a a_<Esc>r
 " Get off my lawn - helpful when learning Vim :)
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
