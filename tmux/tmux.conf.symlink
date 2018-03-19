@@ -8,8 +8,7 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
@@ -26,7 +25,6 @@ set-option -g default-terminal "screen-256color"
 set-option -g status-left-length 50
 set-option -g status-bg '#666666'
 set-option -g status-fg '#aaaaaa'
-MOUSE_STATUS=On
 set-option -g status-right "Mouse #{?mouse,ON,OFF}   #(date '+%a, %b %d - %I:%M') "
 
 bind-key - split-window -v -c '#{pane_current_path}'
@@ -56,10 +54,7 @@ bind c new-window -c "#{pane_current_path}"
 
 set -s escape-time 0
 # Window Navigation
-set -g base-index 1        # start window numbering at 1
-set -g renumber-windows on # renumber windows as they are created desroyed
-# default navigation {prefix}{n}
-
+set -g base-index 1        # start window numbering at 1 set -g renumber-windows on # renumber windows as they are created desroyed # default navigation {prefix}{n} 
 # Break a Pane Out to s New Window
 #
 bind-key b break-pane -d
@@ -69,5 +64,22 @@ bind-key C-j choose-tree
 
 # Toggle mouse on with <prefix>M
 bind m set -g mouse \;  display "Mouse #{?mouse,ON,OFF}"
-
-
+#
+#bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
+#bind -n WheelDownPane select-pane -t= \; send-keys -M
+#bind -n C-WheelUpPane select-pane -t= \; copy-mode -e \; send-keys -M
+#bind -T copy-mode-vi    C-WheelUpPane   send-keys -X halfpage-up
+#bind -T copy-mode-vi    C-WheelDownPane send-keys -X halfpage-down
+#bind -T copy-mode-emacs C-WheelUpPane   send-keys -X halfpage-up
+#bind -T copy-mode-emacs C-WheelDownPane send-keys -X halfpage-down
+#
+## To copy, left click and drag to highlight text in yellow, 
+## # once you release left click yellow text will disappear and will automatically be available in clibboard
+## # Use vim keybindings in copy mode
+#setw -g mode-keys vi
+## Update default binding of `Enter` to also use copy-pipe
+#unbind -T copy-mode-vi Enter
+#bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -selection c"
+#bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard"
+#
+#
