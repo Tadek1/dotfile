@@ -30,7 +30,6 @@ Plugin 'tpope/vim-repeat'                      " see  http://www.vim.org/scripts
 Plugin 'tpope/vim-commentary'
 " Plugin 'vim-ruby/vim-ruby'
 " Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdtree'
