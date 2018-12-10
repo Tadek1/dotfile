@@ -13,7 +13,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Then in your home directory create symbolic link
 
 ````bash
-$ ln -s ~/dotfile/vimrc ~/.vimrc
+$ ln -s ~/dotfiles/vimrc ~/.vimrc
 ````
 Remember to install all plugins (run vim and :PluginInstall).
 
